@@ -4,7 +4,7 @@
     <string-array name="ar_name">
         <item>SLAM 小熊</item>
         <item>2D扫描播放视频</item>
-        <item>2D扫描</item>
+        <item>2D扫描地图</item>
     </string-array>
 
 </resources>
