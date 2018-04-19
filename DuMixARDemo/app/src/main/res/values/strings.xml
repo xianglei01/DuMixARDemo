@@ -1,0 +1,11 @@
+<resources>
+    <string name="demo_title">领取福利</string>
+    <string name="demo_content">新人领取50元优惠券\n老用户随机领取</string>
+    <string name="demo_content_gift">新人50元优惠券已到账户\n请尽快到APP中使用</string>
+    <string name="demo_phone_hint">请输入手机号</string>
+    <string name="demo_btn">立即领取</string>
+    <string name="demo_phone_error">请输入正确的手机号</string>
+    <string name="demo_gift_money">50元</string>
+    <string name="demo_gift">新人福利优惠券</string>
+    <string name="demo_gift_time">有效期至2018.08.08</string>
+</resources>

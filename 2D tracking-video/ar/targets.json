@@ -1,0 +1,23 @@
+{
+	"UI":{
+		"hint":"",
+		"not_found_tip":"未找到目标物，请重新对准",
+		"too_far_hint":"距离太远，请将镜头靠近目标物",
+		"too_near_hint":"距离太近，请将镜头远离目标物",
+		"far_threshold":"1400",
+		"near_threshold":"700",
+		"help_url":""
+	},
+	"targets":[
+		{
+	    	"id":"787432",
+	    	"name":"Mask_Alpha_Video",
+	        "model_path":"models/model",
+	        "template_width":854,
+	        "template_height":480,
+	        "target_width":854,
+	        "target_height":480,
+	        "centre_pos":"427,240,0"
+		}
+	]
+}
