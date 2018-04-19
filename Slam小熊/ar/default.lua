@@ -17,7 +17,6 @@ end
 
 function pod_anim_test()
 	anim = scene.bear:pod_anim()
-					 :anim_repeat(false)
 					 :on_complete(function() 
 					 	ARLOG('pod anim done')
 					 end)

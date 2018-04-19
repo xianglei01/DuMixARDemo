@@ -102,8 +102,8 @@
                    "disableLightEffect":0
                }
            },
-           "position": "0,300,0",
-            "scale": "0.3,0.3,0.3",
+           "position": "0,0,0",
+            "scale": "0.25,0.25,0.25",
             "rotation": "90,0,0",
             "chirlden": [],
             "podSuppl": {
@@ -134,8 +134,8 @@
                    "shininess": 0.5
                 }
            },
-           "position": "0,300,0",
-            "scale": "0.3,0.3,0.3",
+           "position": "0,0,0",
+            "scale": "0.25,0.25,0.25",
             "rotation": "90,0,0",
             "chirlden": [],
             "podSuppl": {
@@ -158,7 +158,7 @@
                 }
             },
             "hudDisplay": {
-                "marginLeft": 0.16,
+                "marginLeft": 0.86,
                 "marginTop": 0.9,
                 "screenRatio": {
                     "screenWidthRatio": 0.12
