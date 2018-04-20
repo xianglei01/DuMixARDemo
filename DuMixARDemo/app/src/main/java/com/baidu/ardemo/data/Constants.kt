@@ -3,7 +3,7 @@ package com.baidu.ardemo.data
 /**
  * Created by lei.xiang on 2018/4/17.
  */
-object Constants {
+object Constants{
 
     val APP_ID = "11926"
     val API_KEY = "a7a8fe0651a88cbd7ff23b0d0496a4c0"

@@ -11,7 +11,7 @@
 	"targets":[
 		{
 	    	"id":"787432",
-	    	"name":"Mask_Alpha_Video",
+	    	"name":"Video",
 	        "model_path":"models/model",
 	        "template_width":854,
 	        "template_height":480,

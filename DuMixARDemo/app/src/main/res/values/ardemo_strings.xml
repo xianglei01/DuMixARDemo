@@ -2,9 +2,9 @@
     <string name="app_name">DuMix AR</string>
     <string name="app_title">DuMix AR Demo</string>
     <string-array name="ar_name">
-        <item>SLAM 小熊</item>
-        <item>2D扫描播放视频</item>
-        <item>2D扫描地图</item>
+        <item>点击小熊领取福利</item>
+        <item>扫描图片播放视频</item>
+        <item>扫描图片展示地图</item>
     </string-array>
 
 </resources>

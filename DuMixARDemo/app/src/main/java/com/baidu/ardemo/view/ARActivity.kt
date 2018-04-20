@@ -54,7 +54,7 @@ class ARActivity : FragmentActivity(), ARCallbackClient {
         // 将trackArFragment设置到布局上
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.bdar_id_fragment_container, mARFragment)
-        fragmentTransaction.commitAllowingStateLoss()
+        fragmentTransaction.commit()
     }
 
     override fun share(title: String?, content: String?, shareUrl: String?, iconUrl: String?, type: Int) {
