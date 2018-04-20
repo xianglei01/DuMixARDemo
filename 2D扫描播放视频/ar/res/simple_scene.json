@@ -1,6 +1,6 @@
 {
     "showImmediately": 0,
-    "showOffscreenGuidance":1,
+    "showOffscreenGuidance":0,
     "userInteraction": {
         "disableAll": 0,
         "disablePinch": 0,

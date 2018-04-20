@@ -15,11 +15,14 @@ local video
 local is_pause = false
 
 app.on_loading_finish = function()
+    -- app.device:open_imu(1)
     video = scene.videoPlane:video()
                             :path('/res/media/bb8-render.mp4')
+                            :delay(1000)
                             :repeat_count(-1)
                             :start()
-    scene.videoPlane:set_visible(false)
+    video:set_visible(true)
+
     scene.videoPlane.on_click = function()
         if(is_pause)
         then
@@ -37,7 +40,6 @@ end
 -- 跟丢回调，暂停
 app.on_target_lost = function()
     video:pause()
-    scene.videoPlane:set_visible(false)
 end
 
 -- 找到识别图
@@ -45,8 +47,5 @@ app.on_target_found = function()
     -- 复位
     local root_node = scene:get_root_node()
     root_node:set_rotation_by_xyz(0.0, 0.0, 0.0)
-    AR:perform_after(500,function()
-        scene.videoPlane:set_visible(true)
-        end)
     video:resume()
 end
