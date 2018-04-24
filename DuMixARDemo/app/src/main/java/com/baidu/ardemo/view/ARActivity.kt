@@ -10,7 +10,9 @@ import com.baidu.ar.constants.ARConfigKey
 import com.baidu.ar.external.ARCallbackClient
 import com.baidu.ar.util.Res
 import com.baidu.ardemo.R
-import com.baidu.ardemo.data.Constants
+import com.baidu.ardemo.data.API_KEY
+import com.baidu.ardemo.data.APP_ID
+import com.baidu.ardemo.data.OPEN_ACTION
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -20,16 +22,16 @@ import org.json.JSONObject
  */
 class ARActivity : FragmentActivity(), ARCallbackClient {
 
-    private var mARFragment: ARFragment? = null
+    private lateinit var mARFragment: ARFragment
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         Res.addResource(this)
         // 设置App Id
-        DuMixARConfig.setAppId(Constants.APP_ID)
+        DuMixARConfig.setAppId(APP_ID)
         // 设置API Key
-        DuMixARConfig.setAPIKey(Constants.API_KEY)
+        DuMixARConfig.setAPIKey(API_KEY)
 
         setContentView(R.layout.activity_ar)
         // 准备调起AR的必要参数
@@ -49,8 +51,8 @@ class ARActivity : FragmentActivity(), ARCallbackClient {
         data.putString(ARConfigKey.AR_VALUE, jsonObj.toString())
         data.putInt(ARConfigKey.AR_ENTRANCE_TYPE, arType)
         mARFragment = ARFragment()
-        mARFragment!!.arguments = data
-        mARFragment!!.setARCallbackClient(this@ARActivity)
+        mARFragment.arguments = data
+        mARFragment.setARCallbackClient(this@ARActivity)
         // 将trackArFragment设置到布局上
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.bdar_id_fragment_container, mARFragment)
@@ -73,7 +75,7 @@ class ARActivity : FragmentActivity(), ARCallbackClient {
      */
     override fun openUrl(url: String?) {
         when (url) {
-            Constants.OPEN_ACTION -> {
+            OPEN_ACTION -> {
                 startActivity(Intent(this, ResultActivity::class.java))
             }
             else -> {
@@ -98,9 +100,7 @@ class ARActivity : FragmentActivity(), ARCallbackClient {
     }
 
     override fun onBackPressed() {
-        //mArFragment为Fragment?可以为空，需要判断
-        var backFlag = mARFragment?.onFragmentBackPressed() ?: false
-        if (!backFlag) {
+        if (!mARFragment.onFragmentBackPressed()) {
             super.onBackPressed()
         }
     }

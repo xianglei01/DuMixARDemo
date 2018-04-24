@@ -19,18 +19,18 @@ import java.util.*
  */
 class MainActivity : BaseActivity(), AdapterView.OnItemClickListener {
 
-    private var mArName: Array<String>? = null
-    private var mListView: ListView? = null
-    private var mAdapter: ArrayAdapter<*>? = null
+    private lateinit var mArName: Array<String>
+    private lateinit var mListView: ListView
+    private lateinit var mAdapter: ArrayAdapter<*>
 
     private val mListItemData: List<ListItemBean>
         get() {
             val list = ArrayList<ListItemBean>()
             // SLAM
-            list.add(ListItemBean(5, "10082382", mArName!![0]))
+            list.add(ListItemBean(5, "10082382", mArName[0]))
             // 2D识别
-            list.add(ListItemBean(0, "10038237", mArName!![1]))
-            list.add(ListItemBean(0, "10089236", mArName!![2]))
+            list.add(ListItemBean(0, "10038237", mArName[1]))
+            list.add(ListItemBean(0, "10089236", mArName[2]))
             return list
         }
 
@@ -45,10 +45,10 @@ class MainActivity : BaseActivity(), AdapterView.OnItemClickListener {
 
     private fun initView() {
         mListView = findViewById(R.id.demo_list)
-        mListView!!.addFooterView(ViewStub(this))
-        mAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, mArName!!)
-        mListView!!.adapter = mAdapter
-        mListView!!.onItemClickListener = this
+        mListView.addFooterView(ViewStub(this))
+        mAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, mArName)
+        mListView.adapter = mAdapter
+        mListView.onItemClickListener = this
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

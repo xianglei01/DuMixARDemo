@@ -41,7 +41,7 @@ open class BaseActivity : Activity() {
     fun setTitleTxt(res: String?) {
         try {
             mTvTitle = findViewById(R.id.base_title)
-            mTvTitle!!.text = res ?: ""
+            mTvTitle?.text = res ?: ""
         } catch (e: Exception) {
         }
 
