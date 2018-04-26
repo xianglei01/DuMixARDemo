@@ -1,4 +1,4 @@
-package com.baidu.ardemo.view
+package com.baidu.ardemo.ar
 
 import android.content.Intent
 import android.net.Uri
@@ -13,6 +13,8 @@ import com.baidu.ardemo.R
 import com.baidu.ardemo.data.API_KEY
 import com.baidu.ardemo.data.APP_ID
 import com.baidu.ardemo.data.OPEN_ACTION
+import com.baidu.ardemo.result.ResultActivity
+import org.jetbrains.anko.setContentView
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -33,7 +35,8 @@ class ARActivity : FragmentActivity(), ARCallbackClient {
         // 设置API Key
         DuMixARConfig.setAPIKey(API_KEY)
 
-        setContentView(R.layout.activity_ar)
+        ARView().setContentView(this)
+
         // 准备调起AR的必要参数
         // AR_KEY:AR内容平台里申请的每个case的key
         // AR_TYPE:AR类型，目前0代表2D跟踪类型，5代表SLAM类型，后续会开放更多类型
@@ -47,15 +50,18 @@ class ARActivity : FragmentActivity(), ARCallbackClient {
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
         data.putString(ARConfigKey.AR_VALUE, jsonObj.toString())
         data.putInt(ARConfigKey.AR_ENTRANCE_TYPE, arType)
+        initView(data)
+    }
+
+    private fun initView(data: Bundle) {
         mARFragment = ARFragment()
         mARFragment.arguments = data
         mARFragment.setARCallbackClient(this@ARActivity)
         // 将trackArFragment设置到布局上
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.bdar_id_fragment_container, mARFragment)
+        fragmentTransaction.replace(R.id.ar_layout, mARFragment)
         fragmentTransaction.commit()
     }
 

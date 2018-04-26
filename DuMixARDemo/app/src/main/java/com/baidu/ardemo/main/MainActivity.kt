@@ -1,5 +1,6 @@
-package com.baidu.ardemo.view
+package com.baidu.ardemo.main
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -8,20 +9,21 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.baidu.ar.util.ARLog
-import com.baidu.ardemo.BaseActivity
 import com.baidu.ardemo.ListItemBean
 import com.baidu.ardemo.R
+import com.baidu.ardemo.ar.ARActivity
+import org.jetbrains.anko.find
+import org.jetbrains.anko.setContentView
 import java.util.*
 
 /**
  * Created by lei.xiang on 2018/4/02.
  * 首页，包含AR入口列表（SLAM，2D）
  */
-class MainActivity : BaseActivity(), AdapterView.OnItemClickListener {
+class MainActivity : Activity(), AdapterView.OnItemClickListener {
 
     private lateinit var mArName: Array<String>
     private lateinit var mListView: ListView
-    private lateinit var mAdapter: ArrayAdapter<*>
 
     private val mListItemData: List<ListItemBean>
         get() {
@@ -36,18 +38,16 @@ class MainActivity : BaseActivity(), AdapterView.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main, true)
-        setTitleTxt(R.string.app_title)
+        MainView().setContentView(this)
         ARLog.setDebugEnable(true)
         mArName = resources.getStringArray(R.array.ar_name)
         initView()
     }
 
     private fun initView() {
-        mListView = findViewById(R.id.demo_list)
+        mListView = find(R.id.main_list)
         mListView.addFooterView(ViewStub(this))
-        mAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, mArName)
-        mListView.adapter = mAdapter
+        mListView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, mArName)
         mListView.onItemClickListener = this
     }
 

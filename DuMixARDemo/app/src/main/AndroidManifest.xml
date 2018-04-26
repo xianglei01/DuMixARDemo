@@ -22,7 +22,7 @@
         android:largeHeap="true"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         <activity
-            android:name=".view.MainActivity"
+            android:name=".main.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.ARActivity"
+            android:name=".ar.ARActivity"
             android:screenOrientation="portrait" />
 
         <!-- AR语音识别 start -->
@@ -40,7 +40,7 @@
             android:exported="false" />
         <!-- AR语音识别 end -->
         <activity
-            android:name=".view.ResultActivity"
+            android:name=".result.ResultActivity"
             android:screenOrientation="portrait" />
     </application>
 

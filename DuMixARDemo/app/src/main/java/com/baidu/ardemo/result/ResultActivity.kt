@@ -1,21 +1,28 @@
-package com.baidu.ardemo.view
+package com.baidu.ardemo.result
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
-import com.baidu.ardemo.BaseActivity
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RelativeLayout
+import android.widget.TextView
 import com.baidu.ardemo.R
 import com.baidu.ardemo.data.REGEX_PHONE
+import org.jetbrains.anko.find
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.setContentView
+import org.jetbrains.anko.toast
 import java.util.regex.Pattern
 
 /**
  * Created by lei.xiang on 2018/4/08.
  * 领取福利页面
  */
-class ResultActivity : BaseActivity(), View.OnClickListener {
+class ResultActivity : Activity() {
 
     private lateinit var mContent: TextView
     private lateinit var mEditPhone: EditText
@@ -24,29 +31,25 @@ class ResultActivity : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_demo, true)
-        setTitleTxt(R.string.demo_title)
+        ResultView().setContentView(this)
         initView()
     }
 
     private fun initView() {
-        mContent = findViewById(R.id.demo_content)
-        mEditPhone = findViewById(R.id.demo_edit_phone)
-        mLayoutResult = findViewById(R.id.demo_result_layout)
-        mBtn = findViewById(R.id.demo_btn)
-        mBtn.setOnClickListener(this@ResultActivity)
+        mContent = find(R.id.demo_content)
+        mEditPhone = find(R.id.demo_edit_phone)
+        mLayoutResult = find(R.id.demo_result_layout)
+        mBtn = find(R.id.demo_btn)
+        initListener()
     }
 
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.demo_btn -> {
-                //验证手机号，领取福利
-                val phone = mEditPhone.text
-                if (TextUtils.isEmpty(phone) || !isMobileNO(phone)) {
-                    Toast.makeText(this@ResultActivity,
-                            R.string.demo_phone_error, Toast.LENGTH_SHORT).show()
-                    return
-                }
+    private fun initListener() {
+        mBtn.onClick {
+            //验证手机号，领取福利
+            val phone = mEditPhone.text
+            if (TextUtils.isEmpty(phone) || !isMobileNO(phone)) {
+                toast(R.string.demo_phone_error)
+            } else {
                 hideKeyBroadView(mEditPhone)
                 //隐藏输入框、按钮，显示领取结果
                 mEditPhone.visibility = View.GONE

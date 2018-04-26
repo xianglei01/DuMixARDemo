@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="main_list" type="id"/>
+    <item name="ar_layout" type="id"/>
+    <item name="demo_content" type="id"/>
+    <item name="demo_edit_phone" type="id"/>
+    <item name="demo_btn" type="id"/>
+    <item name="demo_result_layout" type="id"/>
+    <item name="demo_gift_money" type="id"/>
+</resources>
